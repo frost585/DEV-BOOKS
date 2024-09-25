@@ -8,7 +8,7 @@ const books = await getCollection("books");
 <Layout title="Welcome to Astro.">
   <main>
     <h1 class="text-center text-7xl font-extrabold mb-24">
-      Dev <span class="block">Books</span>
+      Light <span class="block">Novels</span>
     </h1>
     <section aria-label="Libros recomendados para programadores">
       <div class="px-4 mx-auto max-w-screen-xl">
@@ -16,7 +16,15 @@ const books = await getCollection("books");
           {
             books.map((books) => {
               const { slug, data } = books;
-              const { title, author, img, readtime, description, buy } = data;
+              const {
+                title,
+                author,
+                img,
+                estado,
+                volúmenes,
+                description,
+                buy,
+              } = data;
               return (
                 <article class="flex">
                   <a
@@ -37,8 +45,15 @@ const books = await getCollection("books");
                     >
                       {title}
                     </h2>
-                    <p class="mb-4 text-gray-300 max-w-sm">{description}</p>
-                    <span class="text-xs">⌛ Lectura en {readtime}</span>
+                    <p class="mb-4 text-gray-300 max-w-sm">
+                      Genéros:
+                      {description}{" "}
+                    </p>
+                    <span class="text-xs">
+                      {" "}
+                      Numero de volúmenes: {volúmenes}
+                    </span>
+                    <span class="text-xs"> Estado: {estado}</span>
                   </div>
                 </article>
               );
